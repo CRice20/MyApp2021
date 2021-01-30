@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+         <link rel="stylesheet" href="stylesW.css">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
+
+
+    <title>Weather ☁🌞🌧</title>
+</head>
+<body>
+    <div class= "container" class= "body">
+        <div class = "weather-app">
+
+
+
+        <input type= "text" placeholder = "Search City..." class= "search" id= "cityInput" autofocus = "on">      
+        <a href="#" class="btn btn-primary" class= "search-button" id= "searchCity">Search</a>
+        <button type="button" class="btn btn-info" id= "currentLocation">Get Current Location</button>
+     
+ 
+
+         <div class="container" class = "current-weather">
+            <div class="card" style="width: 20rem;" style= "width: 15rem; height: 60px;">
+                    <h5 class="card-title" class="city" id= "currentCity" >Fountain Valley, CA</h5>
+                    <p class="card-text" class="date-time" id= "date">  Weekday, Month date, Year 
+                        <div id = "time">Time</div>
+                   
+                        </p>
+                    <div>
+                    <h3 style="float: left;">
+                    <img src="CrescentMoonEmoji.jpg" class="moon" width = 100px;> </h3>
+                     <h3>
+                          <div> <span  class= "temperature" id= "current-temp">64</span>
+                        <span class = "units" >
+                            <a href = "#" id="fahrenheit">&#176F</a> | 
+                            <a href = "#" id= "celsius"> &#176C</a>
+                        </div></h3>
+                    </div>
+                    <p class = "card-text"  id= "weather-condition">Clear Skies</p>
+                    <p class="card-text" class="tempRange"> H:<span id= "high">73</span>&#176F L:<span id= "low">  46</span>&#176F </p>
+                     <p class="card-text" class="feels-like"> Feels like <span id="feels-like">61</span>&#176F</p>
+                    <p class="card-text" class="humidity"> Humidity: <span id= "humidity-percent">80</span>%</p>
+                    <br />
+                    </div>
+                    </div>
+
+    <ul class="future-hours">
+        <button class="hourly">Now <br />🌙 61&#176 </button>
+        <button class="hourly">7PM <br /> 🌙 57&#176 </button>
+        <button class="hourly">8PM <br />🌙 55&#176 </button>
+        <button class="hourly">9PM <br />🌙 55&#176 </button>
+    
+    </ul>
+
+    <br />
+    <br />
+            <ul class="future-days" class="list-group list-group-flush">
+                <li class="list-group-item">Saturday 🌞
+                    <br />
+                    H: 64&#176 L: 45&#176
+                </li>
+                <li class="list-group-item">Sunday 🌞
+                    <br />
+                    H: 63&#176 L: 46&#176
+                </li>
+                <li class="list-group-item">Monday ⛅
+                    <br />H: 63&#176 L: 46&#176
+                </li>
+                <li class="list-group-item">Tuesday ⛅
+                    <br />H: 66&#176 L: 48&#176
+                </li>
+                <li class="list-group-item">Wednesday ⛅
+                    <br /> H: 68&#176 L: 48&#176
+                </li>
+            </ul>
+        </div>  
+
+
+    </div>
+    </div>
+
+    <script src = "ProjectWeek5.js">
+      </script>
+    
+</body>
+</html>
