@@ -53,6 +53,8 @@ let timeElement = document.querySelector ("#time")
 
  function displayWeather(response){
    console.log(response);
+let iconElement = document.querySelector ("#icon");
+
   document.querySelector ("#currentCity").innerHTML=response.data.name;
   document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
   document.querySelector("#current-temp").innerHTML= Math.round(response.data.main.temp);
@@ -61,6 +63,7 @@ let timeElement = document.querySelector ("#time")
  document.querySelector("#low").innerHTML= Math.round(response.data.main.temp_min);
  document.querySelector("#feels-like").innerHTML=Math.round(response.data.main.feels_like);
  document.querySelector("#weather-condition").innerHTML= response.data.weather[0].description;
+ iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  }
 
       function searchCity (city){
