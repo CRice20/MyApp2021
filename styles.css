@@ -155,6 +155,8 @@ h5 {
 
 #country {
   display: inline; 
+}
 
- 
+#weather-condition{
+  text-transform: capitalize;
 }

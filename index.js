@@ -54,7 +54,7 @@ let timeElement = document.querySelector ("#time")
  function displayWeather(response){
    console.log(response);
   document.querySelector ("#currentCity").innerHTML=response.data.name;
-  document.querySelector ("#country").innerHTML = response.data.sys.country;
+  document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
   document.querySelector("#current-temp").innerHTML= Math.round(response.data.main.temp);
  document.querySelector ("#humidity-percent").innerHTML=Math.round(response.data.main.humidity);
  document.querySelector("#high").innerHTML=Math.round(response.data.main.temp_max);
