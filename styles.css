@@ -13,6 +13,10 @@ body {
   border-radius: 12px;
   max-width: 550px;
 }
+h5 {
+  margin-bottom: 0px auto;
+  padding-bottom: 0;
+}
 
 .body {
   border-color: transparent;
@@ -147,4 +151,10 @@ body {
 }
 .btn-info {
   margin-bottom: o auto;
+}
+
+#country {
+  display: inline; 
+
+ 
 }
