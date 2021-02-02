@@ -57,13 +57,15 @@ let iconElement = document.querySelector ("#icon");
 
   document.querySelector ("#currentCity").innerHTML=response.data.name;
   document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
-  document.querySelector("#current-temp").innerHTML= Math.round(response.data.main.temp);
+  document.querySelector("#current-temp").innerHTML= Math.round(fahrenheitTemp);
  document.querySelector ("#humidity-percent").innerHTML=Math.round(response.data.main.humidity);
  document.querySelector("#high").innerHTML=Math.round(response.data.main.temp_max);
  document.querySelector("#low").innerHTML= Math.round(response.data.main.temp_min);
  document.querySelector("#feels-like").innerHTML=Math.round(response.data.main.feels_like);
  document.querySelector("#weather-condition").innerHTML= response.data.weather[0].description;
  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  fahrenheitTemp = Math.round(response.data.main.temp);
  }
 
       function searchCity (city){
@@ -102,24 +104,25 @@ form.addEventListener ("click", showCitySubmit);
 searchCity ("New York");    
 
 let currentLocationButton =document.querySelector ("#currentLocation");
-currentLocationButton.addEventListener("click", displayWeatherAtLocation)
+currentLocationButton.addEventListener("click", displayWeatherAtLocation);
 
     
-function cToFahrenheit(event) {
+function displayFahrenheitTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round ((temperature * 9)/ 5 +32);
+   temperatureElement.innerHTML = fahrenheitTemp;
 }
 
-function fToCelsius(event) {
+function displayCelsiusTemp(event) {
   event.preventDefault();
     let temperatureElement = document.querySelector("#current-temp");
-  let temperature = temperatureElement.innerHTML;
-    temperature.innerHTML = Math.round ((temperature - 32) * 5 /9);
+    let celsiusTemp = (fahrenheitTemp - 32) * 5 /9;
+    temperatureElement.innerHTML = Math.round (celsiusTemp);
 }
 
+let fahrenheitTemp = null;
+
 let fahrLink = document.querySelector("#fahrenheit");
-fahrLink.addEventListener("click", cToFahrenheit);
+fahrLink.addEventListener("click", displayFahrenheitTemp);
 let celLink= document.querySelector ("#celsius");
-celLink.addEventListener ("click", fToCelsius);
+celLink.addEventListener ("click", displayCelsiusTemp);
