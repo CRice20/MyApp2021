@@ -31,13 +31,13 @@ h5 {
 .btn-primary {
   display: block;
   width: 25%;
-  position: relative;
-  left: 73px;
-  box-shadow: grey;
+ box-shadow: grey;
+ position: relative;
+ left: 95px;
 }
 
 .search {
-  margin: 20px 75px;
+  margin: 15px 75px;
   display: block;
 }
 
@@ -150,7 +150,7 @@ h5 {
   font-size: 12px;
 }
 .btn-info {
-  margin-bottom: o auto;
+  margin-bottom: 0 auto;
 }
 
 #country {
