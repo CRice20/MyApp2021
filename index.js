@@ -55,6 +55,7 @@ let timeElement = document.querySelector ("#time")
    console.log(response);
 let iconElement = document.querySelector ("#icon");
 
+
   document.querySelector ("#currentCity").innerHTML=response.data.name;
   document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
   document.querySelector("#current-temp").innerHTML= Math.round(fahrenheitTemp);
@@ -65,7 +66,12 @@ let iconElement = document.querySelector ("#icon");
  document.querySelector("#weather-condition").innerHTML= response.data.weather[0].description;
  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
-  fahrenheitTemp = response.data.main.temp;
+ fahrenheitTemp = response.data.main.temp;
+  
+ }
+
+ function displayFiveDayForecast (response){
+   console.log (response.data);
  }
 
       function searchCity (city){
@@ -73,6 +79,9 @@ let iconElement = document.querySelector ("#icon");
                let units = "imperial";
                let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
                 axios.get(apiUrl).then(displayWeather);
+
+              let apiForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+              axios.get(apiForecastUrl).then (displayFiveDayForecast);
         }
 
 
@@ -100,8 +109,8 @@ let iconElement = document.querySelector ("#icon");
     let form= document.querySelector ("#searchCity");
 form.addEventListener ("click", showCitySubmit);
     
-    
-searchCity ("New York");    
+  
+
 
 let currentLocationButton =document.querySelector ("#currentLocation");
 currentLocationButton.addEventListener("click", displayWeatherAtLocation);
@@ -116,21 +125,24 @@ function displayFahrenheitTemp(event) {
 
    temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
+let fahrenheitTemp = null;
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
     let temperatureElement = document.querySelector("#current-temp");
-    
+
     fahrLink.classList.remove ("active");
     celLink.classList.add ("active");
 
     let celsiusTemp = (fahrenheitTemp - 32) * 5 /9;
-    temperatureElement.innerHTML = Math.round (celsiusTemp);
+    temperatureElement.innerHTML= Math.round(celsiusTemp);
 }
 
-let fahrenheitTemp = null;
+
 
 let fahrLink = document.querySelector("#fahrenheit");
 fahrLink.addEventListener("click", displayFahrenheitTemp);
 let celLink= document.querySelector ("#celsius");
 celLink.addEventListener ("click", displayCelsiusTemp);
+
+searchCity ("New York");    
