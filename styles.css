@@ -17,6 +17,10 @@ h5 {
   margin-bottom: 0px auto;
   padding-bottom: 0;
 }
+h6 {
+  padding: 0 auto;  
+  margin: 0 auto; 
+}
 
 .body {
   border-color: transparent;
@@ -52,8 +56,8 @@ h5 {
 
 .card {
   border: transparent;
-  margin: 0;
-  margin-bottom: 0;
+  margin: 0 auto;
+  
   padding: 0px;
   background-color: transparent;
   position: relative;
@@ -83,7 +87,7 @@ h5 {
 
 .list-group-item {
   position: relative;
-  bottom: 420px;
+  bottom: 575px;
   left: -175px;
   display: block;
   padding: 8px 3px;
@@ -105,8 +109,8 @@ h5 {
 .weather-app {
   margin: 0 auto;
   border-radius: 12px;
-  width: 500px;
-  height: 540px;
+  width: 600px;
+  height: 600px;
   padding-top: 10px;
 
   background-image: linear-gradient(
@@ -121,6 +125,8 @@ h5 {
   mix-blend-mode: multiply;
   margin-bottom: 15px;
 }
+
+
 
 #currentDateTime {
   font-weight: 750;

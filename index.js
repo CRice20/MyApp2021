@@ -49,7 +49,18 @@ dateElement.innerHTML = displayDate(now);
 let timeElement = document.querySelector ("#time")
  timeElement.innerHTML = now.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
 
-
+function formatHours (timestamp){
+ let date = new Date(timestamp);
+ let hours = date.getHours();
+ if (hours <10){
+   hours = `0${hours}`;
+ }
+ let minutes = date.getMinutes();
+ if (minutes <10){
+   minutes = `0${minutes}`
+ }
+   return `${hours}:${minutes}`;
+}
 
  function displayWeather(response){
    console.log(response);
@@ -70,8 +81,55 @@ let iconElement = document.querySelector ("#icon");
   
  }
 
- function displayFiveDayForecast (response){
-   console.log (response.data);
+ function displayHourlyForecast (response){
+   
+   let forecastElement1 = document.querySelector ("#hourlyForecast1");
+      
+   let forecast = response.data.list[0];
+   forecastElement1.innerHTML=
+   `<button class="hourly">
+   <h6>${formatHours (forecast.dt * 1000)}</h6>
+   <img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
+   <h6>
+   ${Math.round(forecast.main.temp)}&#176
+   </h6>
+    </button>`;
+   
+    let forecastElement2 = document.querySelector ("#hourlyForecast2")
+    forecast = response.data.list[1];
+        forecastElement2.innerHTML =
+    `<button class="hourly">
+    <h6>${formatHours (forecast.dt * 1000)}</h6>
+    <img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
+    <h6>
+    ${Math.round(forecast.main.temp)}&#176
+    </h6>
+     </button>`;
+
+     let forecastElement3 = document.querySelector ("#hourlyForecast3")
+    forecast = response.data.list[2];
+        forecastElement3.innerHTML =
+    `<button class="hourly">
+    <h6>${formatHours (forecast.dt * 1000)}</h6>
+    <img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
+    <h6>
+    ${Math.round(forecast.main.temp)}&#176
+    </h6>
+     </button>`;
+
+     let forecastElement4 = document.querySelector ("#hourlyForecast4")
+     forecast = response.data.list[3];
+         forecastElement4.innerHTML =
+     `<button class="hourly">
+     <h6>${formatHours (forecast.dt * 1000)}</h6>
+     <img src= "http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/> 
+     <h6>
+     ${Math.round(forecast.main.temp)}&#176
+     </h6>
+      </button>`;
+
+
+   console.log (forecast);
  }
 
       function searchCity (city){
@@ -81,7 +139,7 @@ let iconElement = document.querySelector ("#icon");
                 axios.get(apiUrl).then(displayWeather);
 
               let apiForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
-              axios.get(apiForecastUrl).then (displayFiveDayForecast);
+              axios.get(apiForecastUrl).then (displayHourlyForecast);
         }
 
 
