@@ -54,13 +54,15 @@ function formatHours (timestamp){
  let hours = date.getHours();
  if (hours <10){
    hours = `0${hours}`;
- }
+
  let minutes = date.getMinutes();
  if (minutes <10){
    minutes = `0${minutes}`
  }
    return `${hours}:${minutes}`;
 }
+
+let fahrenheitTemp = null; 
 
  function displayWeather(response){
    console.log(response);
@@ -77,7 +79,8 @@ let iconElement = document.querySelector ("#icon");
  document.querySelector("#weather-condition").innerHTML= response.data.weather[0].description;
  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
- fahrenheitTemp = response.data.main.temp;
+ fahrenheitTemp = response.data.main.temp; 
+  
   
  }
 
@@ -155,6 +158,8 @@ let iconElement = document.querySelector ("#icon");
           navigator.geolocation.getCurrentPosition(searchLocation)
 
         }
+
+        
         function searchLocation (position){
          let lat= position.coords.latitude
           let lon = position.coords.longitude
@@ -183,7 +188,8 @@ function displayFahrenheitTemp(event) {
 
    temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
-let fahrenheitTemp = null;
+
+
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
@@ -196,11 +202,9 @@ function displayCelsiusTemp(event) {
     temperatureElement.innerHTML= Math.round(celsiusTemp);
 }
 
-
-
 let fahrLink = document.querySelector("#fahrenheit");
 fahrLink.addEventListener("click", displayFahrenheitTemp);
 let celLink= document.querySelector ("#celsius");
 celLink.addEventListener ("click", displayCelsiusTemp);
 
-searchCity ("New York");    
+searchCity ("New York");
