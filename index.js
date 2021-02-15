@@ -68,13 +68,23 @@ let timeElement = document.querySelector ("#time");
 
  function displayWeather(response){
    console.log(response);
- document.querySelector ("#currentCity").innerHTML=response.data.name;
- document.querySelector("#current-temp").innerHTML= Math.round(fahrenheitTemp);
- document.querySelector ("#humidity-percent").innerHTML=Math.round(response.data.main.humidity);
- document.querySelector("#high").innerHTML=Math.round(response.data.main.temp_max);
- document.querySelector("#low").innerHTML= Math.round(response.data.main.temp_min);
- document.querySelector("#feels-like").innerHTML=Math.round(response.data.main.feels_like);
- document.querySelector("#weather-condition").innerHTML= response.data.weather[0].description;
+
+let cityElement = document.querySelector ("#currentCity");
+let temperatureElement = document.querySelector("#current-temp");
+let humidityElement = document.querySelector ("#humidity-percent");
+let tempMaxElement = document.querySelector("#high");
+let tempMinElement = document.querySelector("#low");
+let feelsLikeElement = document.querySelector("#feels-like");
+let descriptionElement = document.querySelector("#weather-condition");
+
+
+ cityElement.innerHTML= response.data.name;
+ temperatureElement.innerHTML= Math.round(fahrenheitTemp);
+ humidityElement.innerHTML= Math.round(response.data.main.humidity);
+ tempMaxElement.innerHTML=Math.round(response.data.main.temp_max);
+ tempMinElement.innerHTML= Math.round(response.data.main.temp_min);
+ feelsLikeElement.innerHTML=Math.round(response.data.main.feels_like);
+ descriptionElement.innerHTML= response.data.weather[0].description;
 }
  //iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
