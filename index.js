@@ -49,7 +49,23 @@ dateElement.innerHTML = displayDate(now);
 let timeElement = document.querySelector ("#time");
  timeElement.innerHTML = now.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
 
-//function formatHours (timestamp){
+function formatDate (timestamp){
+  let formatteddate = new Date (timestamp);
+  let formattedhours = formatteddate.getHours();
+    if (formattedhours <10){
+        formattedhours = `0${formattedhours}`;
+    }
+  let formattedminutes = formatteddate.getMinutes();
+     if (formattedminutes < 10){
+       formattedminutes = `0${formattedminutes}`;
+     }
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let formattedday = days [formatteddate.getDay()];
+  return `${formattedday} ${formattedhours}:${formattedminutes}`;
+}
+
+
+ //function formatHours (timestamp){
  //let date = new Date(timestamp);
  //let hours = date.getHours();
  //if (hours <10){
@@ -63,7 +79,7 @@ let timeElement = document.querySelector ("#time");
 //}
 
 //let fahrenheitTemp = null; 
-//let iconElement = document.querySelector ("#icon");
+
  //document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
 
  function displayWeather(response){
@@ -76,17 +92,23 @@ let tempMaxElement = document.querySelector("#high");
 let tempMinElement = document.querySelector("#low");
 let feelsLikeElement = document.querySelector("#feels-like");
 let descriptionElement = document.querySelector("#weather-condition");
+let dtElement = document.querySelector ("#dt");
+let iconElement = document.querySelector ("#icon");
 
 
  cityElement.innerHTML= response.data.name;
- temperatureElement.innerHTML= Math.round(fahrenheitTemp);
+ //temperatureElement.innerHTML= Math.round(fahrenheitTemp);
+ temperatureElement.innerHTML= Math.round(response.data.main.temp);
  humidityElement.innerHTML= Math.round(response.data.main.humidity);
  tempMaxElement.innerHTML=Math.round(response.data.main.temp_max);
  tempMinElement.innerHTML= Math.round(response.data.main.temp_min);
  feelsLikeElement.innerHTML=Math.round(response.data.main.feels_like);
  descriptionElement.innerHTML= response.data.weather[0].description;
+ iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+ dtElement.innerHTML = formatDate(response.data.dt * 1000);
 }
- //iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+ 
 
  //fahrenheitTemp = response.data.main.temp; 
 
@@ -157,8 +179,10 @@ let descriptionElement = document.querySelector("#weather-condition");
     event.preventDefault();
          let city = document.querySelector("#cityInput").value;
          searchCity (city);
-      
-        }
+      }
+
+     searchCity ("New York"); 
+
 
    function displayWeatherAtLocation(event){
           event.preventDefault();
@@ -179,7 +203,7 @@ let descriptionElement = document.querySelector("#weather-condition");
  let form= document.querySelector ("#searchCity");
 form.addEventListener ("click", showCitySubmit);
     
-searchCity ("New York");   
+  
 
 
 let currentLocationButton =document.querySelector ("#currentLocation");
@@ -198,19 +222,19 @@ function displayFahrenheitTemp(event) {
 
 
 
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-    let temperatureElement = document.querySelector("#current-temp");
+//function displayCelsiusTemp(event) {
+  //event.preventDefault();
+    //let temperatureElement = document.querySelector("#current-temp");
 
-    fahrLink.classList.remove ("active");
-    celLink.classList.add ("active");
+    //fahrLink.classList.remove ("active");
+    //celLink.classList.add ("active");
 
-    let celsiusTemp = (fahrenheitTemp - 32) * 5 /9;
-    temperatureElement.innerHTML= Math.round(celsiusTemp);
-}
+    //let celsiusTemp = (fahrenheitTemp - 32) * 5 /9;
+    //temperatureElement.innerHTML= Math.round(celsiusTemp);
+//}
 
-let fahrLink = document.querySelector("#fahrenheit");
-fahrLink.addEventListener("click", displayFahrenheitTemp);
-let celLink= document.querySelector ("#celsius");
-celLink.addEventListener ("click", displayCelsiusTemp);
+//let fahrLink = document.querySelector("#fahrenheit");
+//fahrLink.addEventListener("click", displayFahrenheitTemp);
+//let celLink= document.querySelector ("#celsius");
+//celLink.addEventListener ("click", displayCelsiusTemp);
 

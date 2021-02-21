@@ -23,15 +23,31 @@
         <div class = "weather-app">
 
 <form id= "searchForm">
-    <div class= "row">
-<div class = "searchInfo" class = "col-6">
-        <input type= "text" placeholder = "Enter city & click Search" class= "search" id= "cityInput" autofocus = "on" size = "25">  
+  <div class= "row">
+<div class = "searchInfo" class = "col-9">
+        <input 
+        type= "text"
+         placeholder = "Enter city & click Search" 
+         class= "search"
+         class = "form-control" 
+         id= "cityInput" 
+         autofocus = "on" 
+         size = "25"/>  
 </div> 
-        <div  class= "searchButton">
-        <a href="#" class="btn btn-primary" class= "search-button" id= "searchCity">Search</a>
+    <div class = "searchButton">
+     
+    <input
+    type = "submit"
+    value = "Search"
+    class="btn btn-primary"
+    class= "search-button" 
+    id= "searchCity">
     </div>
-    <div class= "c0l-3">
-        <button type="button" class="btn btn-info" id= "currentLocation">Current Location</button>
+
+    <div class= "col-3">
+        <button type="button"
+         class="btn btn-info" 
+         id= "currentLocation">Current Location</button>
     </div>
 </div>
 </form>
@@ -42,7 +58,7 @@
          <div class="container" class = "current-weather">
             <div class="card" style="width: 20rem;" style= "width: 15rem; height: 60px;">
                     <h5 class="card-title" class="location"><span  id= "currentCity">Fountain Valley, CA</span> <span id = "country"> United States </span> </h5>
-                 
+                    <p> <span id= "dt"> <em>Last updated:</em></span></p>
                     <p class="card-text" class="date-time" id= "date">  Weekday, Month date, Year 
                         <div id = "time">Time</div>
                     
