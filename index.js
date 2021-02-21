@@ -211,6 +211,10 @@ currentLocationButton.addEventListener("click", displayWeatherAtLocation);
 function displayFahrenheitTemp (event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temp");
+
+  celLink.classList.remove("active");
+  fahrLink.classList.add("active");
+
    temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
@@ -220,16 +224,16 @@ function displayFahrenheitTemp (event) {
   // *temperatureElement.innerHTML= Math.round(celsisuTemp);
 //*}
 
- //celLink.classList.remove("active");
-  //fahrLink.classList.add("active");
-
-
 //* let celsiusTemp = null;
 
 function displayCelsiusTemp(event) {
     event.preventDefault();
     let temperatureElement = document.querySelector("#current-temp");
     let celsiusTemp = (fahrenheitTemp - 32) * 5 /9;
+
+    fahrLink.classList.remove ("active");
+    celLink.classList.add ("active");
+
     temperatureElement.innerHTML= Math.round(celsiusTemp);
 }
 
@@ -243,8 +247,7 @@ function displayCelsiusTemp(event) {
 
 
 
-// //fahrLink.classList.remove ("active");
-    //celLink.classList.add ("active");
+
 
 
 let fahrenheitTemp = null; 
