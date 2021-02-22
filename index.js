@@ -79,13 +79,11 @@ function formatDate (timestamp){
 }
 
 
-
- //document.querySelector ("#country").innerHTML = ","+ response.data.sys.country;
-
  function displayWeather(response){
    console.log(response);
 
 let cityElement = document.querySelector ("#currentCity");
+let countryElement = document.querySelector ("#country");
 let temperatureElement = document.querySelector("#current-temp");
 let humidityElement = document.querySelector ("#humidity-percent");
 let tempMaxElement = document.querySelector("#high");
@@ -98,6 +96,7 @@ let iconElement = document.querySelector ("#icon");
 fahrenheitTemp = (response.data.main.temp); 
 
  cityElement.innerHTML= response.data.name;
+ countryElement.innerHTML = ","+ " " + response.data.sys.country;
  temperatureElement.innerHTML= Math.round(fahrenheitTemp);
  //temperatureElement.innerHTML= Math.round(response.data.main.temp);
  humidityElement.innerHTML= Math.round(response.data.main.humidity);
@@ -118,6 +117,7 @@ fahrenheitTemp = (response.data.main.temp);
   let forecastElement = document.querySelector (".hourly");
     forecastElement.innerHTML = null;
   let forecast = null; 
+  console.log (response.data);
  
 
     for (let index = 0; index < 4; index ++){
@@ -133,7 +133,7 @@ fahrenheitTemp = (response.data.main.temp);
 
     }
 
-      console.log (response.data);
+      
  }
    
   function searchCity (city){
