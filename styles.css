@@ -48,7 +48,7 @@ h6 {
 .hourly {
   border-color: transparent;
   background-color: transparent;
-}
+ }
 
 .align-items-center {
   text-align: center;
@@ -66,12 +66,12 @@ h6 {
 
 .future-hours {
   list-style: none;
-  margin: 0px;
-  padding-left: 0px;
+  margin: 0 auto;
   color: #eff8ff;
   padding-top: 3 0px;
   position: relative;
-  bottom: 50px;
+  bottom: 40px;
+
 }
 
 .future-days {
@@ -110,10 +110,10 @@ h6 {
   margin: 0 auto;
   border-radius: 12px;
   width: 600px;
-  height: 600px;
+  height: 670px;
   padding-top: 10px;
 
-  background-image: linear-gradient(to top, #fff1eb 30%, #ace0f9 70%);
+  background-image: linear-gradient(to bottom, #fff1eb 30%, #ace0f9 70%);
 }
 
 .moon {
