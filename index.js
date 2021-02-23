@@ -52,28 +52,47 @@ let timeElement = document.querySelector ("#time");
 function formatDate (timestamp){
   let formatteddate = new Date (timestamp);
   let formattedhours = formatteddate.getHours();
-    if (formattedhours <10){
-        formattedhours = `0${formattedhours}`;
+    if (formattedhours >12){
+        formattedhours = formattedhours - 12;
     }
   let formattedminutes = formatteddate.getMinutes();
      if (formattedminutes < 10){
        formattedminutes = `0${formattedminutes}`;
      }
+
+let meridiem = formatteddate.getHours();
+     if ( meridiem > 12){
+       meridiem = `PM`}
+    else {
+      meridiem = `AM`
+    }
+     
+
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let formattedday = days [formatteddate.getDay()];
-  return `${formattedday} ${formattedhours}:${formattedminutes}`;
+  return `${formattedday} ${formattedhours}:${formattedminutes} ${meridiem}`;
 }
 
 
  function formatHours (timestamp){
+   //let date = new Date.prototype.getTime (timestamp);
+   
+
  let date = new Date(timestamp);
  let hours = date.getHours();
   if (hours <10){
-  hours = `0${hours}`;
- }
+    hours = `0${hours}`;
+  }
+  if (hours == 0){
+    hours = `12`
+  };
+  if (hours > 12){
+    hours = hours -12
+  };
+ 
  let minutes = date.getMinutes();
   if (minutes <10){
-  minutes = `0${minutes}`
+     minutes = `0${minutes}`
  }
    return `${hours}:${minutes}`;
 }
@@ -135,6 +154,10 @@ fahrenheitTemp = (response.data.main.temp);
 
       
  }
+
+ //dateObj = new Date(unixTimestamp * 1000); 
+//utcString = dateObj.toUTCString(); 
+//time = utcString.slice(-11, -4);
    
   function searchCity (city){
      let apiKey = "ccc551a649e7c44f231a9a2558e1aaae";
