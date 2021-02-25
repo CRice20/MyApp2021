@@ -196,6 +196,9 @@ fahrenheitTemp = (response.data.main.temp);
      let units = "imperial";
      let apiUrl=` https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`
          axios.get(apiUrl).then(displayWeather);
+
+    let apiForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+         axios.get(apiForecastUrl).then (displayHourlyForecast);    
         }
 
 let currentLocationButton =document.querySelector ("#currentLocation");

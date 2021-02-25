@@ -112,14 +112,10 @@ h6 {
   width: 600px;
   height: 670px;
   padding-top: 10px;
-
-  background-image: linear-gradient(to bottom, #fff1eb 30%, #ace0f9 70%);
+  background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
 }
 
-.moon {
-  mix-blend-mode: multiply;
-  margin-bottom: 15px;
-}
+
 
 
 
