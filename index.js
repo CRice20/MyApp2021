@@ -73,6 +73,29 @@ let meridiem = formatteddate.getHours();
   return `${formattedday} ${formattedhours}:${formattedminutes} ${meridiem}`;
 }
 
+function formatDate2 (timestamp){
+  let formatteddate = new Date (timestamp);
+  let formattedhours = formatteddate.getHours();
+    if (formattedhours >12){
+        formattedhours = formattedhours - 12;
+    }
+  let formattedminutes = formatteddate.getMinutes();
+     if (formattedminutes < 10){
+       formattedminutes = `0${formattedminutes}`;
+     }
+
+let meridiem = formatteddate.getHours();
+     if ( meridiem > 12){
+       meridiem = `PM`}
+    else {
+      meridiem = `AM`
+    }
+     
+
+  let days = ["Sun.", "Mon.", "Tues.", "Wed.", "Thurs.", "Fri.", "Sat."];
+  let formattedday = days [formatteddate.getDay()];
+  return `${formattedhours}:${formattedminutes} ${meridiem}`;
+}
 
  function formatHours (timestamp){
    //let date = new Date.prototype.getTime (timestamp);
@@ -111,6 +134,8 @@ let feelsLikeElement = document.querySelector("#feels-like");
 let descriptionElement = document.querySelector("#weather-condition");
 let dtElement = document.querySelector ("#dt");
 let iconElement = document.querySelector ("#icon");
+let sunriseElement = document.querySelector ("#sunrise");
+let sunsetElement = document.querySelector ("#sunset");
 
 fahrenheitTemp = (response.data.main.temp); 
 
@@ -125,6 +150,8 @@ fahrenheitTemp = (response.data.main.temp);
  descriptionElement.innerHTML= response.data.weather[0].description;
  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  dtElement.innerHTML = formatDate(response.data.dt * 1000);
+ sunriseElement.innerHTML = formatDate2(response.data.sys.sunrise * 1000);
+ sunsetElement.innerHTML = formatDate2(response.data.sys.sunset * 1000);
 }
 
  
